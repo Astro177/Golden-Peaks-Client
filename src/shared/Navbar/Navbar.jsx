@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/Authprovider.jsx";
 import ThemeChange from "../../components/ThemeChange/ThemeChange.jsx";
+import logo from "/Projects/Assignment-12-client/public/Logo.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -81,7 +82,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
-            <img src="" alt="" className="w-12 h-12 mr-6 rounded-full" />
+            <img src={logo} alt="" className="w-12 h-12 mr-6 rounded-full" />
             Golden Peaks{" "}
           </Link>
         </div>
