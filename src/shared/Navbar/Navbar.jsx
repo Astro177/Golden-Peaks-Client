@@ -3,12 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/Authprovider.jsx";
 import ThemeChange from "../../components/ThemeChange/ThemeChange.jsx";
 import logo from "/Projects/Assignment-12-client/public/Logo.png";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        toast.success('Successfully logged out!')
+      })
       .catch((err) => {
         console.log(err.message);
       });

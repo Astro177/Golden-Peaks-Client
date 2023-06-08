@@ -8,6 +8,7 @@ import login from "../../assets/animations/login.json";
 import { AuthContext } from "../../provider/Authprovider";
 import { app } from "../../firebase/firebase.config";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const auth = getAuth(app);
@@ -34,6 +35,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         reset;
+        toast.success('Successfully logged in!')
         navigate(from, { replace: true });
       })
       .catch((err) => {

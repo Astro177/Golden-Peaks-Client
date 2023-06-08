@@ -24,21 +24,35 @@ const AboutUS = () => {
           <button className="btn-outlined">Explore</button>
         </div>
         <div>
-          <p className="font-bold underline text-4xl mb-8">Facilities</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p className="mb-4"> BOYS & GIRLS</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p className="mb-4">AGES 7-15</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p className="mb-4">TEAM & INDIVIDUAL SPORTS</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p className="mb-4">PERFORMING & CREATIVE ARTS</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p className="mb-4">WATERFRONT ACTIVITIES</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p className="mb-4">SPECIAL EVENTS & TRIPS</p>
-          <AiFillCheckCircle className="text-teal-400" />
-          <p>PROFESSIONAL STAFF</p>
+          <p className="font-bold underline text-4xl mb-8 mt-8">Facilities</p>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p className="mb-4"> BOYS & GIRLS</p>
+          </div>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p className="mb-4">AGES 7-15</p>
+          </div>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p className="mb-4">TEAM & INDIVIDUAL SPORTS</p>
+          </div>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p className="mb-4">PERFORMING & CREATIVE ARTS</p>
+          </div>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p className="mb-4">WATERFRONT ACTIVITIES</p>
+          </div>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p className="mb-4">SPECIAL EVENTS & TRIPS</p>
+          </div>
+          <div className="flex gap-2">
+            <AiFillCheckCircle className="text-teal-400" />
+            <p>PROFESSIONAL STAFF</p>
+          </div>
         </div>
       </div>
     </div>

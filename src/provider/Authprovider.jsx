@@ -12,6 +12,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -31,6 +33,7 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
+        toast.success("Successfully logged in!");
       })
       .catch((err) => {
         console.log(err.message);
