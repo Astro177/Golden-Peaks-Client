@@ -19,6 +19,7 @@ const ClassCard = ({ singleClass }) => {
   <div className="card-body items-center text-center">
     <h2 className="card-title text-3xl font-bold">{class_name}</h2>
     <p className="text-md font-semibold">Instructor: {instructor_name}</p>
+    <p>Students: {number_of_students}</p>
     <p>Available Seats: {available_seats}</p>
     <p>Price: {price}$</p>
     <div className="card-actions">
