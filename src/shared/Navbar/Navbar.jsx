@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast.success('Successfully logged out!')
+        toast.success("Successfully logged out!");
       })
       .catch((err) => {
         console.log(err.message);
@@ -73,14 +73,16 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/dashboard"
-                  className={({ isActive }) =>
-                    isActive ? "active" : "default"
-                  }
-                >
-                  Dashboard
-                </NavLink>
+                {user && (
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                )}
               </li>
             </ul>
           </div>
@@ -116,12 +118,16 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/dashboard"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Dashboard
-              </NavLink>
+              {user && (
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>
