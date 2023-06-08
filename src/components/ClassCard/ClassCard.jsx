@@ -12,7 +12,7 @@ const ClassCard = ({ singleClass }) => {
     number_of_students,
   } = singleClass;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card items-center w-96 bg-base-100 shadow-xl">
   <figure className="px-10 pt-10">
     <img src={class_image} alt="Shoes" className="rounded-xl w-72 h-48"/>
   </figure>
