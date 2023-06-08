@@ -16,5 +16,5 @@
     @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-500;
   }
   .text-color {
-    @apply bg-gradient-to-r from-purple-400 via-indigo-400 to-pink-600 text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-teal-400 via-teal-400 to-teal-600 text-transparent bg-clip-text;
   }

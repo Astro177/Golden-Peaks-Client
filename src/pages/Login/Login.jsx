@@ -74,10 +74,9 @@ const Login = () => {
         <p>Login using social networks</p>
         <div className="flex justify-center mt-4 mb-2">
           <button
-            className="text-4xl text-purple-700 p-2 bg-white rounded-xl"
+            className="text-4xl text-black p-2 bg-teal-400 rounded-xl hover:scale-110 duration-150"
             onClick={handleGoogleSignIn}
           >
-            {" "}
             <TbBrandGoogle />
           </button>
         </div>
@@ -89,14 +88,14 @@ const Login = () => {
               placeholder="Email"
               //   ref={emailRef}
               required
-              className="input input-bordered input-primary w-full max-w-xs mb-6"
+              className="input input-bordered border-teal-400 w-full max-w-xs mb-6"
             />
             <input
               type={showPassword ? "text" : "password"}
               {...register("password")}
               placeholder="password"
               required
-              className="input input-bordered input-primary w-full max-w-xs"
+              className="input input-bordered border-teal-400 w-full max-w-xs"
             />
           </div>
           <p className="text-red-800">{error}</p>
@@ -115,7 +114,7 @@ const Login = () => {
             get access to our vast category of toys{" "}
             <Link
               to="/register"
-              className="text-xl hover:underline decoration-1 text-sky-500"
+              className="text-xl hover:underline decoration-1 text-teal-500"
             >
               Sign Up
             </Link>

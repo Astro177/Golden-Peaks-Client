@@ -70,7 +70,7 @@ const Register = () => {
               placeholder="Name"
               {...register("name")}
               required
-              className="input input-bordered input-primary w-full max-w-xs mb-6"
+              className="input input-bordered border-teal-400  w-full max-w-xs mb-6"
             />
           </div>
           <div>
@@ -79,7 +79,7 @@ const Register = () => {
               placeholder="Email"
               {...register("email")}
               required
-              className="input input-bordered input-primary w-full max-w-xs mb-6"
+              className="input input-bordered border-teal-400  w-full max-w-xs mb-6"
             />
           </div>
           <div>
@@ -88,7 +88,7 @@ const Register = () => {
               required
               placeholder="Password"
               {...register("password")}
-              className="input input-bordered input-primary w-full max-w-xs mb-6"
+              className="input input-bordered border-teal-400  w-full max-w-xs mb-6"
             />
           </div>
           <div>
@@ -97,7 +97,7 @@ const Register = () => {
               placeholder="Photo URL"
               {...register("photo")}
               required
-              className="input input-bordered input-primary w-full max-w-xs "
+              className="input input-bordered border-teal-400 w-full max-w-xs "
             />
           </div>
           <p className="text-error">{error}</p>
@@ -105,7 +105,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-xl hover:underline decoration-1 text-sky-500"
+              className="text-xl hover:underline decoration-1 text-teal-500"
             >
               Sign In
             </Link>
