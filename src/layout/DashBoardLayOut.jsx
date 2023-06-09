@@ -1,12 +1,13 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import DashBoard from "../pages/DashBoard/DashBoard";
 
 const DashBoardLayOut = () => {
-    return (
-        <>
-            <Outlet/>
-        </>
-    );
+  return (
+    <>
+      <DashBoard />
+    </>
+  );
 };
 
 export default DashBoardLayOut;

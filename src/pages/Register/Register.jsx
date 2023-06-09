@@ -7,6 +7,7 @@ import Lottie from "react-lottie";
 
 import { AuthContext } from "../../provider/Authprovider";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const { registerUser, updateUserDetails } = useContext(AuthContext);
@@ -30,8 +31,10 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-
+    if (data.password != data.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
     if (data.password.length < 6) {
       setError("Please provide a 6 character password");
       return;
@@ -45,12 +48,12 @@ const Register = () => {
       registerUser(data.email, data.password)
         .then((result) => {
           updateUserDetails(result.user, data.name, data.photo);
-
-          navigate("/login");
+          toast.success("Successfully registered")
+          navigate("/");
           setError("");
         })
         .catch((err) => {
-          console.log(err.message);
+         setError(err.message);
         });
     }
   };
@@ -93,6 +96,15 @@ const Register = () => {
           </div>
           <div>
             <input
+              type="password"
+              required
+              placeholder="Confirm Password"
+              {...register("confirmPassword")}
+              className="input input-bordered border-teal-400  w-full max-w-xs mb-6"
+            />
+          </div>
+          <div>
+            <input
               type="text"
               placeholder="Photo URL"
               {...register("photo")}
@@ -110,7 +122,9 @@ const Register = () => {
               Sign In
             </Link>
           </p>
-          <button type="submit" className="btn-outlined">Register</button>
+          <button type="submit" className="btn-outlined">
+            Register
+          </button>
         </form>
       </div>
     </div>

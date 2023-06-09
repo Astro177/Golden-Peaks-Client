@@ -11,8 +11,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const auth = getAuth(app);
-  const { handleGoogleSignIn, signIn } = useContext(AuthContext);
+  const { handleGoogleSignIn, signIn,user } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,7 +20,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState();
 
-  const emailRef = useRef();
   const {
     register,
     handleSubmit,
@@ -43,18 +41,6 @@ const Login = () => {
       });
   };
 
-  //   const handleResetPassword = (e) => {
-  //     const email = emailRef.current.value;
-  //     if (!email) {
-  //       alert("please provide your email address to reset password");
-  //       return;
-  //     }
-  //     sendPasswordResetEmail(auth, email)
-  //       .then(() => {})
-  //       .catch((err) => {
-  //         console.log(err.message);
-  //       });
-  //   };
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -88,7 +74,6 @@ const Login = () => {
             <input
               {...register("email")}
               placeholder="Email"
-              //   ref={emailRef}
               required
               className="input input-bordered border-teal-400 w-full max-w-xs mb-6"
             />
@@ -97,23 +82,23 @@ const Login = () => {
               {...register("password")}
               placeholder="password"
               required
-              className="input input-bordered border-teal-400 w-full max-w-xs"
+              className="input input-bordered border-teal-400 w-full max-w-xs relative"
             />
           </div>
           <p className="text-red-800">{error}</p>
           <p className="mt-4 cursor-pointer hover:underline decoration-1">
             <button
               className="btn rounded-3xl"
+
               onClick={() => setShowPassword(!showPassword)}
             >
               {!showPassword ? "Show Password" : "Hide password"}
             </button>
             <br />
-            {/* <span onClick={handleResetPassword}>Forgot password?</span> */}
           </p>
           <p className="mb-4">
             <span className="text-2xl text-color">New here?</span> Sign up to
-            get access to our vast category of toys{" "}
+            get access to our vast category of activities
             <Link
               to="/register"
               className="text-xl hover:underline decoration-1 text-teal-500"
