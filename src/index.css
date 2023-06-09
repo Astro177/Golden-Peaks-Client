@@ -9,6 +9,9 @@
   .btn-outlined {
     @apply font-medium  transition duration-200  shadow-md  md:mb-0  px-4 py-2 md:px-8 md:py-3 m-2 text-sm rounded-xl  text-white bg-teal-500 hover:bg-transparent hover:text-teal-400 border-0 border-b-4 border-teal-800;
   }
+  .btn-selected {
+    @apply font-medium shadow-md md:mb-0 px-4 py-2 md:px-8 md:py-3 m-2 text-sm rounded-xl  text-white btn;
+  }
   .active {
     @apply font-medium tracking-wide text-teal-500 transition-colors duration-200 bg-transparent rounded-full;
   }

@@ -3,7 +3,6 @@ import { NavLink, Outlet } from "react-router-dom";
 import { VscThreeBars } from "react-icons/vsc";
 import DashBoardOptions from "../../components/DashBoardOptions/DashBoardOptions";
 import { AuthContext } from "../../provider/Authprovider";
-import SelectedClasses from "./SelectedClasses";
 
 const DashBoard = () => {
   const{user}=useContext(AuthContext)
@@ -17,9 +16,9 @@ const DashBoard = () => {
           >
             <VscThreeBars />
           </label>
-        <div className="drawer-content mx-auto flex items-center justify-center my-container">
-          <p className="text-5xl font-bold text-center">
-            Welcome To Your Dashboard <br />  <span className="text-cyan-600">{user?.displayName}</span>
+        <div className="drawer-content mx-auto flex-col items-center justify-center my-container">
+          <p className="text-5xl font-bold text-center mb-32">
+            Welcome To Your Dashboard <br />  <span className="text-color">{user?.displayName}</span>
           </p>  
             <Outlet />
         </div>

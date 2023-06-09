@@ -7,6 +7,7 @@ import { HiOutlineAcademicCap } from "react-icons/hi";
 import { SiGoogleclassroom } from "react-icons/si";
 import { MdAttachMoney } from "react-icons/md";
 import { toast } from "react-hot-toast";
+import ThemeChange from "../ThemeChange/ThemeChange";
 
 const DashBoardOptions = () => {
   const navigate = useNavigate();
@@ -49,6 +50,9 @@ const DashBoardOptions = () => {
           <img src={user?.photoURL} alt="" className="w-8 h-8 rounded-full" />
           <span className="font-semibold">Profile</span>
         </NavLink>
+      </li>
+      <li>
+        <ThemeChange/>
       </li>
       <hr className="divider" />
       <li onClick={handleLogOut}>
