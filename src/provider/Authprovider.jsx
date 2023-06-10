@@ -14,6 +14,8 @@ import {
 import { app } from "../firebase/firebase.config";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { saveUser } from "../api/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -33,6 +35,7 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
+        saveUser(result.user);
         toast.success("Successfully logged in!");
       })
       .catch((err) => {
@@ -61,6 +64,19 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
       setLoading(false);
       setUser(currentUser);
     });
@@ -68,7 +84,10 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, []);
+  
   const logOut = () => {
+    setLoading(true);
+    localStorage.removeItem("access-token");
     return signOut(auth);
   };
 

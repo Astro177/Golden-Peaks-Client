@@ -8,6 +8,7 @@ import Lottie from "react-lottie";
 import { AuthContext } from "../../provider/Authprovider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { saveUser } from "../../api/auth";
 
 const Register = () => {
   const { registerUser, updateUserDetails } = useContext(AuthContext);
@@ -48,12 +49,13 @@ const Register = () => {
       registerUser(data.email, data.password)
         .then((result) => {
           updateUserDetails(result.user, data.name, data.photo);
-          toast.success("Successfully registered")
+          toast.success("Successfully registered");
+          saveUser(result.user);
           navigate("/");
           setError("");
         })
         .catch((err) => {
-         setError(err.message);
+          setError(err.message);
         });
     }
   };

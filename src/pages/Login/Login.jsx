@@ -6,7 +6,6 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import Lottie from "react-lottie";
 import login from "../../assets/animations/login.json";
 import { AuthContext } from "../../provider/Authprovider";
-import { app } from "../../firebase/firebase.config";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
