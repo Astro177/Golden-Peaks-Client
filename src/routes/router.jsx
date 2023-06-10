@@ -9,6 +9,7 @@ import DashBoard from "../pages/DashBoard/DashBoard";
 import DashBoardLayOut from "../layout/DashBoardLayOut";
 import SelectedClasses from "../pages/DashBoard/SelectedClasses";
 import EnrolledClasses from "../pages/DashBoard/EnrolledClasses";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoardLayOut />,
+    element: (
+      <PrivateRoute>
+        <DashBoardLayOut />
+      </PrivateRoute>
+    ),
     children: [
       // {
       //   path: "/dashboard",
@@ -51,12 +56,12 @@ export const router = createBrowserRouter([
       // },
       {
         path: "/dashboard/selected-classes",
-        element: <SelectedClasses/>,
+        element: <SelectedClasses />,
       },
       {
         path: "/dashboard/enrolled-classes",
-        element: <EnrolledClasses/>,
-      }
+        element: <EnrolledClasses />,
+      },
     ],
   },
 ]);
