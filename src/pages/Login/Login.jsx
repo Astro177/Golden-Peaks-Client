@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const { handleGoogleSignIn, signIn,user } = useContext(AuthContext);
+  const { handleGoogleSignIn, signIn} = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();

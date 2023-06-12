@@ -16,6 +16,7 @@ const ClassCard = ({ singleClass }) => {
   } = singleClass;
   const { user } = useContext(AuthContext);
   const [selected, setSelected] = useState(false);
+  const token = localStorage.getItem("access-token");
 
   const handleSelected = () => {
     if (user) {
@@ -32,6 +33,7 @@ const ClassCard = ({ singleClass }) => {
       fetch(`${import.meta.env.VITE_API_URL}/selectedClass`, {
         method: "POST",
         headers: {
+          authorization: `bearer ${token}`,
           "content-type": "application/json",
         },
         body: JSON.stringify(classDetails),

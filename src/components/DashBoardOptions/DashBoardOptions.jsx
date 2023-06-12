@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/Authprovider";
 import { GrLogout } from "react-icons/gr";
 import { AiOutlineHome } from "react-icons/ai";
 import { HiOutlineAcademicCap } from "react-icons/hi";
@@ -8,17 +6,24 @@ import { SiGoogleclassroom } from "react-icons/si";
 import { MdAttachMoney } from "react-icons/md";
 import { toast } from "react-hot-toast";
 import ThemeChange from "../ThemeChange/ThemeChange";
+import useAuth from "../../hooks/useAuth";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const DashBoardOptions = () => {
   const navigate = useNavigate();
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
+  // const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructor();
+
   const handleLogOut = () => {
     logOut();
-    toast.success("Successfully logged out")
+    toast.success("Successfully logged out");
     navigate("/");
   };
   return (
     <>
+      {/* student dashboard options */}
       <li>
         <NavLink to="/dashboard/selected-classes">
           <HiOutlineAcademicCap className="text-2xl" />
@@ -34,9 +39,48 @@ const DashBoardOptions = () => {
       <li>
         <NavLink to="/">
           <MdAttachMoney className="text-2xl" />
-          <span>Payment</span>
+          <span>Payment History</span>
         </NavLink>
       </li>
+
+      <li>
+        <NavLink to="/dashboard/addClass">
+          <HiOutlineAcademicCap className="text-2xl" />
+          <span>Add a Class</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/myClasses">
+          <HiOutlineAcademicCap className="text-2xl" />
+          <span>My Classes</span>
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/dashboard/manageClass">
+          <HiOutlineAcademicCap className="text-2xl" />
+          <span>Manage Classes</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/manageUsers">
+          <HiOutlineAcademicCap className="text-2xl" />
+          <span>Manage Users</span>
+        </NavLink>
+      </li>
+
+      {/* instructor dashboard option */}
+     {/* {isInstructor&& <>
+    
+     </>} */}
+
+      {/* admin dashboard option */}
+    {/* {
+      isAdmin&& <>
+   
+
+      </>
+    } */}
       <hr className="divider" />
       <li>
         <NavLink to="/">
@@ -52,7 +96,7 @@ const DashBoardOptions = () => {
         </NavLink>
       </li>
       <li>
-        <ThemeChange/>
+        <ThemeChange />
       </li>
       <hr className="divider" />
       <li onClick={handleLogOut}>

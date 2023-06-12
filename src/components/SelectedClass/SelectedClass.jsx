@@ -14,13 +14,13 @@ const SelectedClass = ({ classDetails, index, refetch }) => {
 
   const handleDelete = (classDetails) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure you want to cancel?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#0d9488",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/selectedClass/${classDetails?._id}`, {
@@ -30,7 +30,7 @@ const SelectedClass = ({ classDetails, index, refetch }) => {
           .then((data) => {
             refetch();
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Canceled!", "Your class has been canceled.", "success");
             }
           });
       }
@@ -58,7 +58,7 @@ const SelectedClass = ({ classDetails, index, refetch }) => {
             className="flex items-center btn-delete"
           >
             <RiDeleteBinFill />
-            Delete
+            Cancel
           </button>
         </th>
         <th>

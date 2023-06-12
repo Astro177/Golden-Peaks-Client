@@ -24,3 +24,16 @@
   .text-color {
     @apply bg-gradient-to-r from-teal-400 via-teal-400 to-teal-600 text-transparent bg-clip-text;
   }
+  .inputField {
+    @apply w-full lg:w-96 px-6 py-2 rounded-md bg-teal-700 bg-opacity-20 focus:outline focus:outline-teal-300 input
+}
+
+.myBtn {
+  @apply  text-base px-3 py-1 border border-primary rounded-lg text-primary hover:bg-primary hover:text-white disabled:opacity-30 disabled:cursor-not-allowed
+}
+.myBtnSec{
+  @apply  px-3 my-2 py-1 border border-accent rounded-md text-accent hover:bg-accent hover:text-white disabled:opacity-30 disabled:cursor-not-allowed
+}
+.myBtnThr{
+  @apply  px-3 py-1 border border-purple-600 rounded-md text-purple-600 hover:bg-purple-600 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed
+}

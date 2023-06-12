@@ -92,7 +92,12 @@ const Register = () => {
               type="password"
               required
               placeholder="Password"
-              {...register("password")}
+              {...register("password", {
+                required: true,
+                minLength: 6,
+                CapLetter: /(?=.*[A-Z])/,
+                Special: /(?=.*[!@#$&*])/,
+              })}
               className="input input-bordered border-teal-400  w-full max-w-xs mb-6"
             />
           </div>
@@ -115,6 +120,19 @@ const Register = () => {
             />
           </div>
           <p className="text-error">{error}</p>
+         
+          {errors.password?.type === "minLength" && (
+            <p className="text-red-600">Password must be 6 characters</p>
+          )}
+
+          {errors.password?.type === "CapLetter" && (
+            <p className="text-red-600">Password must have one Uppercase</p>
+          )}
+          {errors.password?.type === "Special" && (
+            <p className="text-red-600">
+              Password must have one Special Character
+            </p>
+          )}
           <p className="mb-2">
             Already have an account?{" "}
             <Link
