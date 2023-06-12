@@ -35,14 +35,11 @@ const Banner = () => {
             }}
           >
             <div className="mx-auto">
-              <div className="absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-white">
+              <div className="absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-color">
                 <div className="max-w-md px-5 lg:px-0 ">
                   <h1 className="mb-2 hero-heading lg:text-5xl text-4xl font-bold">
-                    Make Your Summer
+                    Make Your Summer Unforgettable!
                   </h1>
-                  <p className="text-gray-200 mb-3 font-semibold text-2xl">
-                    Unforgettable!
-                  </p>
                   <Link to="/classes">
                     <button className="btn-outlined text-white">
                       Enroll Now
@@ -63,14 +60,11 @@ const Banner = () => {
             }}
           >
             <div className="mx-auto">
-              <div className="absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-white">
+              <div className="absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-color">
                 <div className="max-w-md px-5 lg:px-0 ">
                   <h1 className="mb-2 hero-heading lg:text-5xl text-4xl font-bold">
-                    This Will be the best summer
+                    This Will be the best summer Just For You!
                   </h1>
-                  <p className="text-gray-200 mb-3 font-semibold text-2xl">
-                    Just For You!
-                  </p>
                   <Link to="/classes">
                     <button className="btn-outlined text-white">
                       See More
@@ -91,15 +85,12 @@ const Banner = () => {
             }}
           >
             <div className="mx-auto">
-              <div className="absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-white">
+              <div className="absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-color">
                 <div data-aos="fade-right" className="max-w-md px-5 lg:px-0">
                   <h1 className="mb-2 hero-heading lg:text-5xl text-4xl font-bold">
-                    Get Ready For a Lot Of
+                    Get Ready For a Lot Of Adventures!
                   </h1>
-                  <p className="text-gray-200 mb-3 font-semibold text-2xl">
-                    Adventures!
-                  </p>
-                  <Link to="/blog">
+                  <Link to="/">
                     <button className="btn-outlined text-white">
                       More About Us
                     </button>
@@ -119,14 +110,11 @@ const Banner = () => {
             }}
           >
             <div className="">
-              <div className=" absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-white">
+              <div className=" absolute flex justify-start transform -translate-y-1/2 left-30 top-1/2 text-color">
                 <div data-aos="fade-right" className="">
                   <h1 className="mb-2 hero-heading lg:text-5xl text-4xl font-bold">
-                    So Fun That You Won`t Want To
+                    So Fun That You Won`t Want To Leave!
                   </h1>
-                  <p className="text-gray-200 mb-3 font-semibold text-2xl">
-                    Leave!
-                  </p>
                   <Link to="/blog">
                     <button className="btn-outlined text-white">
                       See More

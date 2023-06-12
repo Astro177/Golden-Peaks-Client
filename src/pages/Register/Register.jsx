@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import registration from "../../assets/animations/register.json";
 import Lottie from "react-lottie";
-
 import { AuthContext } from "../../provider/Authprovider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -23,11 +22,11 @@ const Register = () => {
 
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -35,6 +34,9 @@ const Register = () => {
     if (data.password != data.confirmPassword) {
       setError("Passwords do not match");
       return;
+    }
+    if (data.password != /(?=.*?[#?!@$%^&*-])/) {
+      setError("Password Should have at least one special character");
     }
     if (data.password.length < 6) {
       setError("Please provide a 6 character password");
@@ -89,7 +91,7 @@ const Register = () => {
           </div>
           <div>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               required
               placeholder="Password"
               {...register("password", {
@@ -103,7 +105,7 @@ const Register = () => {
           </div>
           <div>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               required
               placeholder="Confirm Password"
               {...register("confirmPassword")}
@@ -120,7 +122,7 @@ const Register = () => {
             />
           </div>
           <p className="text-error">{error}</p>
-         
+
           {errors.password?.type === "minLength" && (
             <p className="text-red-600">Password must be 6 characters</p>
           )}
@@ -128,11 +130,12 @@ const Register = () => {
           {errors.password?.type === "CapLetter" && (
             <p className="text-red-600">Password must have one Uppercase</p>
           )}
-          {errors.password?.type === "Special" && (
-            <p className="text-red-600">
-              Password must have one Special Character
-            </p>
-          )}
+          <button
+            className="btn rounded-3xl mt-5"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {!showPassword ? "Show Password" : "Hide password"}
+          </button>
           <p className="mb-2">
             Already have an account?{" "}
             <Link

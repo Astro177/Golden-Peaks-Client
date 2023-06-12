@@ -13,8 +13,8 @@ import useInstructor from "../../hooks/useInstructor";
 const DashBoardOptions = () => {
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
-  // const [isAdmin] = useAdmin();
-  // const [isInstructor] = useInstructor();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogOut = () => {
     logOut();
@@ -43,44 +43,41 @@ const DashBoardOptions = () => {
         </NavLink>
       </li>
 
-      <li>
-        <NavLink to="/dashboard/addClass">
-          <HiOutlineAcademicCap className="text-2xl" />
-          <span>Add a Class</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/myClasses">
-          <HiOutlineAcademicCap className="text-2xl" />
-          <span>My Classes</span>
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink to="/dashboard/manageClass">
-          <HiOutlineAcademicCap className="text-2xl" />
-          <span>Manage Classes</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/manageUsers">
-          <HiOutlineAcademicCap className="text-2xl" />
-          <span>Manage Users</span>
-        </NavLink>
-      </li>
-
       {/* instructor dashboard option */}
-     {/* {isInstructor&& <>
-    
-     </>} */}
+      {isInstructor && (
+        <>
+          <li>
+            <NavLink to="/dashboard/addClass">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Add a Class</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/myClasses">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>My Classes</span>
+            </NavLink>
+          </li>
+        </>
+      )}
 
       {/* admin dashboard option */}
-    {/* {
-      isAdmin&& <>
-   
-
-      </>
-    } */}
+      {isAdmin && (
+        <>
+          <li>
+            <NavLink to="/dashboard/manageClass">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Manage Classes</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageUsers">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Manage Users</span>
+            </NavLink>
+          </li>
+        </>
+      )}
       <hr className="divider" />
       <li>
         <NavLink to="/">

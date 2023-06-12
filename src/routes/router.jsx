@@ -14,11 +14,13 @@ import AddClass from "../pages/DashBoard/InstructorPages/AddClass";
 import MyClasses from "../pages/DashBoard/InstructorPages/MyClasses";
 import ManageClass from "../pages/DashBoard/Admin/ManageClass";
 import ManageUsers from "../pages/DashBoard/Admin/ManageUsers";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -53,6 +55,7 @@ export const router = createBrowserRouter([
         <DashBoardLayOut />
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage />,
     children: [
       // {
       //   path: "/dashboard",
@@ -68,19 +71,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/addClass",
-        element: <AddClass/>,
+        element: <AddClass />,
       },
       {
         path: "/dashboard/myClasses",
-        element: <MyClasses/>,
+        element: <MyClasses />,
       },
       {
         path: "/dashboard/manageClass",
-        element: <ManageClass/>,
+        element: <ManageClass />,
       },
       {
         path: "/dashboard/manageUsers",
-        element: <ManageUsers/>,
+        element: <ManageUsers />,
       },
     ],
   },

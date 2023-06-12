@@ -2,7 +2,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { TbBrandGoogle } from "react-icons/tb";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import Lottie from "react-lottie";
 import login from "../../assets/animations/login.json";
 import { AuthContext } from "../../provider/Authprovider";
@@ -23,7 +22,6 @@ const Login = () => {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -85,16 +83,16 @@ const Login = () => {
             />
           </div>
           <p className="text-red-800">{error}</p>
-          <p className="mt-4 cursor-pointer hover:underline decoration-1">
+         
             <button
-              className="btn rounded-3xl"
+              className="btn rounded-3xl mt-5"
 
               onClick={() => setShowPassword(!showPassword)}
             >
               {!showPassword ? "Show Password" : "Hide password"}
             </button>
-            <br />
-          </p>
+          
+          
           <p className="mb-4">
             <span className="text-2xl text-color">New here?</span> Sign up to
             get access to our vast category of activities
