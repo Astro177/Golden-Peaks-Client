@@ -2,6 +2,7 @@ import React from "react";
 
 import { HiOutlinePlay } from "react-icons/hi2";
 import useEnroll from "../../hooks/useEnroll";
+import { Helmet } from "react-helmet-async";
 
 
 const EnrolledClasses = () => {
@@ -9,7 +10,9 @@ const EnrolledClasses = () => {
 
   return (
     <section>
-     
+     <Helmet>
+        <title>Golden Peaks | Dashboard-Enroll Classes</title>
+      </Helmet>
       <div className="flex items-center justify-center lg:mx-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {enrollClasses.map((enrollClass) => (
@@ -25,7 +28,7 @@ const EnrolledClasses = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{enrollClass?.className}</h2>
+                <h2 className="card-title">{enrollClass?.class_name}</h2>
                 <div className="space-y-3 mb-3">
                   <p className="font-semibold">
                     Instructor Name: {enrollClass?.instructorName}

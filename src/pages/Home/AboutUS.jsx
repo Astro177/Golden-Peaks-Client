@@ -1,6 +1,6 @@
 import React from "react";
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { AiFillCheckCircle } from "react-icons/ai";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const AboutUS = () => {
   return (
