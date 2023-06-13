@@ -8,7 +8,7 @@ import { Fragment } from "react";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 
-const PaymentModal = ({ handlePayment, closeModal, isOpen,classDetails }) => {
+const PaymentModal = ({ closeModal, isOpen,classDetails }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>

@@ -51,16 +51,35 @@ const Register = () => {
       registerUser(data.email, data.password)
         .then((result) => {
           updateUserDetails(result.user, data.name, data.photo);
-          toast.success("Successfully registered");
-          saveUser(result.user);
-          navigate("/");
-          setError("");
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photo: data.photo,
+          };
+          console.log(saveUser);
+          fetch(`${import.meta.env.VITE_API_URL}/users`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                toast.success("Successfully registered");
+                navigate("/");
+                setError("");
+              }
+            });
         })
         .catch((err) => {
           setError(err.message);
         });
     }
   };
+
+ 
   return (
     <div className="md:flex justify-center items-center gap-8">
       <div>

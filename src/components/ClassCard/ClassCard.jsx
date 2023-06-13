@@ -1,10 +1,20 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
-import React, { useContext } from "react";
-import { AuthContext } from "../../provider/Authprovider";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { Navigate, useNavigation } from "react-router-dom";
+import Loader from "../../shared/Loader";
+import useInstructor from "../../hooks/useInstructor";
+import useAdmin from "../../hooks/useAdmin";
+import useClass from "../../hooks/useClass";
+import useEnroll from "../../hooks/useEnroll";
 
 const ClassCard = ({ singleClass }) => {
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <Loader />;
+  }
   const {
     _id,
     class_name,
@@ -14,9 +24,13 @@ const ClassCard = ({ singleClass }) => {
     price,
     number_of_students,
   } = singleClass;
-  const { user } = useContext(AuthContext);
-  const [selected, setSelected] = useState(false);
+  const { user } = useAuth();
   const token = localStorage.getItem("access-token");
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  const [addedClass , refetch] = useClass();
+  // const [enrollClasses] = useEnroll();
+
 
   const handleSelected = () => {
     if (user) {
@@ -30,7 +44,7 @@ const ClassCard = ({ singleClass }) => {
         number_of_students,
         email: user?.email,
       };
-      fetch(`${import.meta.env.VITE_API_URL}/selectedClass`, {
+      fetch(`${import.meta.env.VITE_API_URL}/selected-classes-cart`, {
         method: "POST",
         headers: {
           authorization: `bearer ${token}`,
@@ -41,17 +55,17 @@ const ClassCard = ({ singleClass }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            setSelected(true);
             toast.success("Class added successfully");
           }
         });
     } else {
       toast.error("Please log in first");
+      Navigate("/login");
     }
   };
 
   return (
-    <div className="card items-center w-96 bg-base-100 shadow-xl mb-6">
+    <div className={`card items-center w-96 ${available_seats <= 0 ? "bg-red-900" : "bg-base-100"} shadow-xl mb-6`}>
       <figure className="px-10 pt-10">
         <img
           src={class_image}
@@ -69,9 +83,17 @@ const ClassCard = ({ singleClass }) => {
         <p className="font-semibold">Price: {price}$</p>
         <div>
           <button
-            disabled={selected}
+            // disabled={
+            //   available_seats <= 0 ||
+            //   isAdmin ||
+            //   isInstructor ||
+            //   addedClass?.find((classCart) => classCart?.classId === _id) ||
+            //   enrollClasses?.find((id) => id._id === _id)
+            //     ? true
+            //     : false
+            // }
             onClick={handleSelected}
-            className={selected ? "btn-selected" : "btn-outlined"}
+            className="btn-outlined"
           >
             Select Class
           </button>

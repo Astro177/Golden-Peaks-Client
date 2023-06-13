@@ -13,8 +13,6 @@ const ManageUsers = () => {
     return <Loader />;
   }
   const [axiosSecure] = useAxiosSecure();
-  const isAdmin = false;
-  const isInstructor = false;
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],

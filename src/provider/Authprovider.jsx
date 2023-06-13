@@ -35,11 +35,23 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
-        saveUser(result.user);
-        toast.success("Successfully logged in!");
+        fetch(`${import.meta.env.VITE_API_URL}/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              toast.success("Successfully registered");              
+            }
+          });
       })
       .catch((err) => {
         console.log(err.message);
+        toast.error(err.message);
       });
   };
 

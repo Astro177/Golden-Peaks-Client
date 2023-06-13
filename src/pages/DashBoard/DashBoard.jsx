@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { VscThreeBars } from "react-icons/vsc";
 import DashBoardOptions from "../../components/DashBoardOptions/DashBoardOptions";
 import { AuthContext } from "../../provider/Authprovider";
+import Navbar from "../../shared/Navbar/Navbar";
 
 const DashBoard = () => {
   const{user}=useContext(AuthContext)

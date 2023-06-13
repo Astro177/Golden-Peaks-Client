@@ -35,7 +35,7 @@ const AddClass = () => {
     };
 
     console.log(newClass);
-    const res = await axiosSecure.post("/class", newClass);
+    const res = await axiosSecure.post("/popular-classes", newClass);
     if (res.data.insertedId) {
       refetch();
       form.reset()

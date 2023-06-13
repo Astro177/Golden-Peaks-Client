@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { GrLogout } from "react-icons/gr";
+import { BiLogOut } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
 import { HiOutlineAcademicCap } from "react-icons/hi";
 import { SiGoogleclassroom } from "react-icons/si";
@@ -37,11 +37,41 @@ const DashBoardOptions = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/">
+        <NavLink to="/dashboard/payment-history">
           <MdAttachMoney className="text-2xl" />
           <span>Payment History</span>
         </NavLink>
       </li>
+      <li>
+            <NavLink to="/dashboard/addClass">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Add a Class</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/myClasses">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>My Classes</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/updateClasses">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Update Classes</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageClass">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Manage Classes</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageUsers">
+              <HiOutlineAcademicCap className="text-2xl" />
+              <span>Manage Users</span>
+            </NavLink>
+          </li>
 
       {/* instructor dashboard option */}
       {isInstructor && (
@@ -99,7 +129,7 @@ const DashBoardOptions = () => {
       <li onClick={handleLogOut}>
         <NavLink to="/">
           <span className="flex gap-2 font-semibold">
-            <GrLogout className="text-2xl" />
+            <BiLogOut className="text-2xl" />
             <span>Log Out</span>
           </span>
         </NavLink>

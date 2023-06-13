@@ -5,7 +5,6 @@ import useAxiosSecure from './useAxiosSecure';
 
 
 const useEnroll = () => {
-
     const {user , loading} = useAuth()
     const [axiosSecure] = useAxiosSecure()
     const{data: enrollClasses = [] , refetch}=useQuery({

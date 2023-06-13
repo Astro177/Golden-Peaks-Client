@@ -15,6 +15,8 @@ import MyClasses from "../pages/DashBoard/InstructorPages/MyClasses";
 import ManageClass from "../pages/DashBoard/Admin/ManageClass";
 import ManageUsers from "../pages/DashBoard/Admin/ManageUsers";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PaymentHistory from "../pages/DashBoard/PaymentHistory";
+import UpdateClass from "../pages/DashBoard/InstructorPages/UpdateClass";
 
 export const router = createBrowserRouter([
   {
@@ -70,12 +72,20 @@ export const router = createBrowserRouter([
         element: <EnrolledClasses />,
       },
       {
+        path: "/dashboard/payment-history",
+        element: <PaymentHistory/>,
+      },
+      {
         path: "/dashboard/addClass",
         element: <AddClass />,
       },
       {
         path: "/dashboard/myClasses",
         element: <MyClasses />,
+      },
+      {
+        path: "/dashboard/updateClasses",
+        element: <UpdateClass/>,
       },
       {
         path: "/dashboard/manageClass",

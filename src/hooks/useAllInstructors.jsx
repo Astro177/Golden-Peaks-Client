@@ -5,7 +5,7 @@ const useAllInstructors = () => {
     const{data: instructors=[] , isLoading: loading , refetch}=useQuery({
         queryKey:["instructors"],
         queryFn: async()=>{
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/instructors`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/popular-instructors`);
             return res.json();
         }
     })
