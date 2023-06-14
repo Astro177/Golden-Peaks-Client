@@ -60,7 +60,7 @@ const UpdateClass = () => {
   return (
     <section>
       <Helmet>
-        <title>String | Dashboard-Update Class</title>
+        <title>Golden Peaks | Dashboard-Update Class</title>
       </Helmet>
       <SectionTitle
         subHeading="Wanna update your classes?"

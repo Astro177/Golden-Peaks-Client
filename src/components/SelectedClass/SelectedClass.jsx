@@ -21,7 +21,7 @@ const SelectedClass = ({ classDetails, index, refetch }) => {
       confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selected-classes-cart/${classDetails?._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/selected-classes-cart/${classDetails?._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

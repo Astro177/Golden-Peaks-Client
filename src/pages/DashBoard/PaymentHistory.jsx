@@ -30,7 +30,7 @@ const PaymentHistory = () => {
   return (
     <section>
       <Helmet>
-        <title>Golden Peaks | Payment History</title>
+        <title>Golden Peaks | Dashboard-Payment History</title>
       </Helmet>
       <SectionTitle heading="All your payments"/>
       

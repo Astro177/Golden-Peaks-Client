@@ -1,6 +1,7 @@
 import InstructorView from "../../components/InstructorView/InstructorView.Jsx";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useAllInstructors from "../../hooks/useAllInstructors";
-import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+
 
 const Bestinstructors = () => {
   const [instructors] = useAllInstructors();

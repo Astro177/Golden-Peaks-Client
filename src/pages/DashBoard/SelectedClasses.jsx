@@ -9,7 +9,7 @@ const SelectedClasses = () => {
   return (
     <div>
       <Helmet>
-        <title>Golden Peaks | Selected Classes</title>
+        <title>Golden Peaks | Dashboard-Selected Classes</title>
       </Helmet>
       <SectionTitle heading="All the classes you selected"/>
       <div className="overflow-x-auto">

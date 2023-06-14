@@ -49,7 +49,7 @@ const AddClass = () => {
   return (
     <section>
       <Helmet>
-        <title>Golden Peaks | Dashboard Add Class</title>
+        <title>Golden Peaks | Dashboard-Add Class</title>
       </Helmet>
       <SectionTitle subHeading="Wanna add a class?" heading="Add Now"/>
       <div className="lg:mx-14">

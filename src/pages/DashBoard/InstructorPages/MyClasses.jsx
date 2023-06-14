@@ -37,7 +37,7 @@ const MyClasses = () => {
   return (
     <section>
       <Helmet>
-        <title>Golden Peaks | Dashboard My Classes</title>
+        <title>Golden Peaks | Dashboard-My Classes</title>
       </Helmet>
       <SectionTitle heading="See all your classes" />
       <div className="lg:mx-12">

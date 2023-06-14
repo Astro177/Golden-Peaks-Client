@@ -10,6 +10,7 @@ import slider2 from "../../assets/sliderpic/slider2.jpg";
 import slider3 from "../../assets/sliderpic/slider3.jpg";
 import slider4 from "../../assets/sliderpic/slider4.jpg";
 import { Link } from "react-router-dom";
+import { Slide } from "react-awesome-reveal";
 
 const Banner = () => {
   SwiperCore.use([Autoplay]);
@@ -20,8 +21,8 @@ const Banner = () => {
         slidesPerView={1}
         modules={[Pagination, Autoplay]}
         className="mySwiper"
-        onSlideChange={() => ("someSlideChange")}
-        onSwiper={(swiper) => ("someSlideChange")}
+        onSlideChange={() => "someSlideChange"}
+        onSwiper={(swiper) => "someSlideChange"}
         autoplay
         loop={true}
       >

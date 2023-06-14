@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { saveUser } from "../../api/auth";
 import { TbBrandGoogle } from "react-icons/tb";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { registerUser, updateUserDetails, handleGoogleSignIn } =
@@ -83,6 +84,9 @@ const Register = () => {
 
   return (
     <div className="md:flex justify-center items-center gap-8">
+      <Helmet>
+        <title>Golden Peaks | Sign-up</title>
+      </Helmet>
       <div>
         <Lottie options={defaultOptions} height={600} width={400} />
       </div>
