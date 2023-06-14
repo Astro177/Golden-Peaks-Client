@@ -17,6 +17,8 @@ import ManageUsers from "../pages/DashBoard/Admin/ManageUsers";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PaymentHistory from "../pages/DashBoard/PaymentHistory";
 import UpdateClass from "../pages/DashBoard/InstructorPages/UpdateClass";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +56,7 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <DashBoardLayOut />
+        <DashBoard />
       </PrivateRoute>
     ),
     errorElement: <ErrorPage />,
@@ -65,35 +67,67 @@ export const router = createBrowserRouter([
       // },
       {
         path: "/dashboard/selected-classes",
-        element: <SelectedClasses />,
+        element: (
+          <PrivateRoute>
+            <SelectedClasses />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/enrolled-classes",
-        element: <EnrolledClasses />,
+        element: (
+          <PrivateRoute>
+            <EnrolledClasses />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/payment-history",
-        element: <PaymentHistory/>,
+        element: (
+          <PrivateRoute>
+            <PaymentHistory />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/addClass",
-        element: <AddClass />,
+        element: (
+          <InstructorRoute>
+            <AddClass />
+          </InstructorRoute>
+        ),
       },
       {
         path: "/dashboard/myClasses",
-        element: <MyClasses />,
+        element: (
+          <InstructorRoute>
+            <MyClasses />
+          </InstructorRoute>
+        ),
       },
       {
         path: "/dashboard/updateClasses",
-        element: <UpdateClass/>,
+        element: (
+          <InstructorRoute>
+            <UpdateClass />
+          </InstructorRoute>
+        ),
       },
       {
         path: "/dashboard/manageClass",
-        element: <ManageClass />,
+        element: (
+          <AdminRoute>
+            <ManageClass />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manageUsers",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
     ],
   },

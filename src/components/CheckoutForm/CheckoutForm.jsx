@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CheckoutForm = ({ classDetails, closeModal, refetch }) => {
   const navigate = useNavigate();
@@ -20,13 +21,15 @@ const CheckoutForm = ({ classDetails, closeModal, refetch }) => {
 
   useEffect(() => {
     if (classDetails.price > 0) {
-      axiosSecure
-        .post("/create-payment-intent", { price: classDetails.price })
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/create-payment-intent`, {
+          price: classDetails.price,
+        })
         .then((res) => {
           setClientSecret(res.data.clientSecret);
         });
     }
-  }, [classDetails, axiosSecure]);
+  }, [classDetails]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -80,9 +83,9 @@ const CheckoutForm = ({ classDetails, closeModal, refetch }) => {
         price: classDetails?.price,
         transactionId: paymentIntent.id,
         totalOrders: classDetails?.length,
-        classId: classDetails?.map((item) => item.classId),
-        selectedClasses: classDetails?.map((item) => item._id),
-        className: classDetails?.map((item) => item.class_name),
+        classId: classDetails?.classId,
+        selectedClasses: classDetails?._id,
+        class_name: classDetails?.class_name,
         date: new Date(),
         orderStatus: "enrolled",
       };
@@ -91,15 +94,14 @@ const CheckoutForm = ({ classDetails, closeModal, refetch }) => {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },
         body: JSON.stringify(enrollData),
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data);
-          if (data.result.insertedId && data.deletedRes.deletedCount > 0) {
-            refetch();
+          console.log(data);
+          if (data.result.acknowledged==true) {
+            // refetch();
             const text = `Enrollment Successful!, TransactionId: ${paymentIntent.id}`;
             toast.success(text);
             navigate("/dashboard/enrolled-classes");

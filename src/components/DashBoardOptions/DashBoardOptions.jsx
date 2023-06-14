@@ -4,6 +4,8 @@ import { AiOutlineHome } from "react-icons/ai";
 import { HiOutlineAcademicCap } from "react-icons/hi";
 import { SiGoogleclassroom } from "react-icons/si";
 import { MdAttachMoney } from "react-icons/md";
+import {AiOutlineUsergroupAdd} from "react-icons/ai"
+import {GrCheckboxSelected}from "react-icons/gr"
 import { toast } from "react-hot-toast";
 import ThemeChange from "../ThemeChange/ThemeChange";
 import useAuth from "../../hooks/useAuth";
@@ -22,63 +24,29 @@ const DashBoardOptions = () => {
     navigate("/");
   };
   return (
-    <>
-      {/* student dashboard options */}
-      <li>
-        <NavLink to="/dashboard/selected-classes">
-          <HiOutlineAcademicCap className="text-2xl" />
-          <span>My Selected Classes</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/enrolled-classes">
-          <SiGoogleclassroom className="text-2xl" />
-          <span>My Enrolled Classes</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/payment-history">
-          <MdAttachMoney className="text-2xl" />
-          <span>Payment History</span>
-        </NavLink>
-      </li>
-      <li>
-            <NavLink to="/dashboard/addClass">
-              <HiOutlineAcademicCap className="text-2xl" />
-              <span>Add a Class</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/myClasses">
-              <HiOutlineAcademicCap className="text-2xl" />
-              <span>My Classes</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/updateClasses">
-              <HiOutlineAcademicCap className="text-2xl" />
-              <span>Update Classes</span>
-            </NavLink>
-          </li>
+    <>      
+      {isAdmin ? (
+        <>
+        {/* admin dashboard option */}
           <li>
             <NavLink to="/dashboard/manageClass">
-              <HiOutlineAcademicCap className="text-2xl" />
+              <SiGoogleclassroom className="text-2xl" />
               <span>Manage Classes</span>
             </NavLink>
           </li>
           <li>
             <NavLink to="/dashboard/manageUsers">
-              <HiOutlineAcademicCap className="text-2xl" />
+              <AiOutlineUsergroupAdd className="text-2xl" />
               <span>Manage Users</span>
             </NavLink>
           </li>
-
-      {/* instructor dashboard option */}
-      {isInstructor && (
+        </>
+      ) : isInstructor ? (
         <>
+        {/* instructor dashboard option */}
           <li>
             <NavLink to="/dashboard/addClass">
-              <HiOutlineAcademicCap className="text-2xl" />
+              <SiGoogleclassroom className="text-2xl" />
               <span>Add a Class</span>
             </NavLink>
           </li>
@@ -89,21 +57,25 @@ const DashBoardOptions = () => {
             </NavLink>
           </li>
         </>
-      )}
-
-      {/* admin dashboard option */}
-      {isAdmin && (
+      ) : (
         <>
+          {/* student dashboard options */}
           <li>
-            <NavLink to="/dashboard/manageClass">
+            <NavLink to="/dashboard/selected-classes">
               <HiOutlineAcademicCap className="text-2xl" />
-              <span>Manage Classes</span>
+              <span>My Selected Classes</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manageUsers">
-              <HiOutlineAcademicCap className="text-2xl" />
-              <span>Manage Users</span>
+            <NavLink to="/dashboard/enrolled-classes">
+              <SiGoogleclassroom className="text-2xl" />
+              <span>My Enrolled Classes</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/payment-history">
+              <MdAttachMoney className="text-2xl" />
+              <span>Payment History</span>
             </NavLink>
           </li>
         </>
@@ -117,7 +89,7 @@ const DashBoardOptions = () => {
       </li>
 
       <li>
-        <NavLink to="/">
+        <NavLink to="/dashboard/profile">
           <img src={user?.photoURL} alt="" className="w-8 h-8 rounded-full" />
           <span className="font-semibold">Profile</span>
         </NavLink>

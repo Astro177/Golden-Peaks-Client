@@ -6,6 +6,10 @@ import { useNavigation } from "react-router-dom";
 import Loader from "../../../shared/Loader";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-hot-toast";
+import { GrUserAdmin } from "react-icons/gr";
+import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const ManageUsers = () => {
   const navigation = useNavigation();
@@ -17,20 +21,24 @@ const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
       return res.data;
     },
   });
 
   const handleAdmin = async (user) => {
-    const res = await axiosSecure.patch(`/users/admin/${user?._id}`);
+    const res = await axios.patch(
+      `${import.meta.env.VITE_API_URL}/users/admin/${user?._id}`
+    );
     if (res.data.modifiedCount > 0) {
       refetch();
       toast.success(`${user?.name} is an Admin Now!`);
     }
   };
   const handleInstructor = async (user) => {
-    const res = await axiosSecure.patch(`/users/instructor/${user?._id}`);
+    const res = await axios.patch(
+      `${import.meta.env.VITE_API_URL}/users/instructor/${user?._id}`
+    );
     if (res.data.modifiedCount > 0) {
       refetch();
       toast.success(`${user?.name} is an Instructor Now!`);
@@ -39,7 +47,10 @@ const ManageUsers = () => {
 
   return (
     <section>
-    
+      <Helmet>
+        <title>Golden Peaks | Dashboard Manage Classes</title>
+      </Helmet>
+      <SectionTitle heading="Manage all users" />
 
       <div className="lg:mx-10">
         <div className="overflow-x-auto">
@@ -78,7 +89,11 @@ const ManageUsers = () => {
                   </td>
                   <th>
                     <button
-                      className="myBtn"
+                      className={
+                        user?.role === "admin" || user?.role === "instructor"
+                          ? "btn"
+                          : "btn-outlined"
+                      }
                       onClick={() => handleAdmin(user)}
                       disabled={
                         user?.role === "admin" || user?.role === "instructor"
@@ -90,7 +105,11 @@ const ManageUsers = () => {
                     </button>
                     <button
                       onClick={() => handleInstructor(user)}
-                      className="myBtnSec ml-2"
+                      className={
+                        user?.role === "admin" || user?.role === "instructor"
+                          ? "btn mt-2"
+                          : "btn-feedback"
+                      }
                       disabled={
                         user?.role === "admin" || user?.role === "instructor"
                           ? true

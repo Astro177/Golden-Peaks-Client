@@ -9,7 +9,7 @@ const useClass = () => {
   const { data: addedClass = [], refetch } = useQuery({
     queryKey: ["class", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/selected-classes-cart?email=${user?.email}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/selected-classes-cart?email=${user?.email}`);
       return res.data;
     },
   });

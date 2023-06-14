@@ -5,6 +5,9 @@ import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAllClasses from "../../../hooks/useAllClasses";
+import axios from "axios";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
   const { user } = useAuth();
@@ -14,28 +17,28 @@ const AddClass = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const instructorName = form.name.value;
-    const instructorEmail = form.email.value;
-    const className = form.className.value;
+    const instructor_name = form.name.value;
+    const instructor_email = form.email.value;
+    const class_name = form.className.value;
     const classPrice = form.price.value;
     const price = parseInt(classPrice);
     const image = form.photo.value;
-    const availableSeats = form.seat.value;
-    const numberOfStudents = 0;
+    const available_seats = form.seat.value;
+    const number_of_students = 0;
     const status = "pending";
     const newClass = {
-      className,
+      class_name,
       image,
-      instructorName,
-      instructorEmail,
-      numberOfStudents,
-      availableSeats,
+      instructor_name,
+      instructor_email,
+      number_of_students,
+      available_seats,
       price,
       status,
     };
 
     console.log(newClass);
-    const res = await axiosSecure.post("/popular-classes", newClass);
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/popular-classes`, newClass);
     if (res.data.insertedId) {
       refetch();
       form.reset()
@@ -45,6 +48,10 @@ const AddClass = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>Golden Peaks | Dashboard Add Class</title>
+      </Helmet>
+      <SectionTitle subHeading="Wanna add a class?" heading="Add Now"/>
       <div className="lg:mx-14">
         <form className="w-full space-y-7 mt-16" onSubmit={handleAdd}>
           {/* Name and email */}
@@ -88,7 +95,7 @@ const AddClass = () => {
             </div>
           </div>
 
-          {/* sit and  */}
+          {/* sit and  price*/}
           <div className="md:flex gap-4 mt-2 space-y-3">
             <div className="md:w-1/2">
               <input

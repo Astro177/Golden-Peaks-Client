@@ -11,7 +11,7 @@ const useInstructor = () => {
         queryKey: ['isInstructor', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`/users/instructor/${user?.email}`);
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/users/instructor/${user?.email}`);
             return res.data.instructor;
         }
     })

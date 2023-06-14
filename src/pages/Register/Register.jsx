@@ -8,9 +8,11 @@ import { AuthContext } from "../../provider/Authprovider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { saveUser } from "../../api/auth";
+import { TbBrandGoogle } from "react-icons/tb";
 
 const Register = () => {
-  const { registerUser, updateUserDetails } = useContext(AuthContext);
+  const { registerUser, updateUserDetails, handleGoogleSignIn } =
+    useContext(AuthContext);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -31,12 +33,12 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    if (data.password != /(?=.*?[#?!@$%^&*-])/) {
+      setError("Password Should have at least one special character");
+    }
     if (data.password != data.confirmPassword) {
       setError("Passwords do not match");
       return;
-    }
-    if (data.password != /(?=.*?[#?!@$%^&*-])/) {
-      setError("Password Should have at least one special character");
     }
     if (data.password.length < 6) {
       setError("Please provide a 6 character password");
@@ -79,7 +81,6 @@ const Register = () => {
     }
   };
 
- 
   return (
     <div className="md:flex justify-center items-center gap-8">
       <div>
@@ -89,6 +90,16 @@ const Register = () => {
         <p className="text-4xl text-color mb-8">
           New to our website? Register now!
         </p>
+        <p>Register using social networks</p>
+        <div className="flex justify-center mt-4 mb-2">
+          <button
+            className="text-4xl text-black p-2 bg-teal-400 rounded-xl hover:scale-110 duration-150"
+            onClick={handleGoogleSignIn}
+          >
+            <TbBrandGoogle />
+          </button>
+        </div>
+        <div className="divider">Or</div>
         <form className=" mb-4" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
@@ -117,7 +128,6 @@ const Register = () => {
                 required: true,
                 minLength: 6,
                 CapLetter: /(?=.*[A-Z])/,
-                Special: /(?=.*[!@#$&*])/,
               })}
               className="input input-bordered border-teal-400  w-full max-w-xs mb-6"
             />

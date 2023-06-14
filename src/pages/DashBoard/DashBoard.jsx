@@ -4,11 +4,15 @@ import { VscThreeBars } from "react-icons/vsc";
 import DashBoardOptions from "../../components/DashBoardOptions/DashBoardOptions";
 import { AuthContext } from "../../provider/Authprovider";
 import Navbar from "../../shared/Navbar/Navbar";
+import { Helmet } from "react-helmet-async";
 
 const DashBoard = () => {
   const{user}=useContext(AuthContext)
   return (
     <div>
+      <Helmet>
+        <title>Golden Peaks | Dashboard</title>
+      </Helmet>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <label

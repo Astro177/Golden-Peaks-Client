@@ -77,20 +77,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        axios
-          .post(`${import.meta.env.VITE_API_URL}/jwt`, {
-            email: currentUser.email,
-          })
-          .then((data) => {
-            localStorage.setItem("access-token", data.data.token);
-            setLoading(false);
-          });
-      } else {
-        localStorage.removeItem("access-token");
-        setLoading(false);
-      }
+      //   axios
+      //     .post(`${import.meta.env.VITE_API_URL}/jwt`, {
+      //       email: currentUser.email,
+      //     })
+      //     .then((data) => {
+      //       localStorage.setItem("access-token", data.data.token);
+      //       setLoading(false);
+      //     });
+      // } else {
+      //   localStorage.removeItem("access-token");
+      //   setLoading(false);
       setLoading(false);
       setUser(currentUser);
+      }
+      
     });
     return () => {
       return unsubscribe();

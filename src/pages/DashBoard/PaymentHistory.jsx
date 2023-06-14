@@ -9,6 +9,8 @@ import Loader from "../../shared/Loader";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const PaymentHistory = () => {
   const navigation = useNavigation();
@@ -20,7 +22,7 @@ const PaymentHistory = () => {
   const [histories, setHistories] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(`/payment?email=${user?.email}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/payment?email=${user?.email}`).then((res) => {
       setHistories(res.data);
     });
   }, []);
@@ -30,6 +32,7 @@ const PaymentHistory = () => {
       <Helmet>
         <title>Golden Peaks | Payment History</title>
       </Helmet>
+      <SectionTitle heading="All your payments"/>
       
       <div className="lg:mx-10 my-10">
         <div className="overflow-x-auto">
@@ -42,7 +45,6 @@ const PaymentHistory = () => {
                 <th>Price</th>
                 <th>Email</th>
                 <th>date</th>
-                <th>Total Orders</th>
                 <th>Order Status</th>
               </tr>
             </thead>
@@ -56,7 +58,6 @@ const PaymentHistory = () => {
                   <td className="font-semibold">
                     {moment(history.date).format("MMM Do YY")}
                   </td>
-                  <td className="font-semibold">{history.totalOrders}</td>
                   <td className="font-semibold text-green-500">
                     {history.orderStatus}
                   </td>

@@ -5,11 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 
 import { FaEdit } from "react-icons/fa";
 
-import { useNavigation } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 
 import Loader from "../../../shared/Loader";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const MyClasses = () => {
   const navigation = useNavigation();
@@ -21,15 +24,22 @@ const MyClasses = () => {
   const { data: classes = [] } = useQuery({
     queryKey: ["instructor-classes"],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/instructor-classes?email=${user?.email}`
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/instructor-classes?email=${
+          user?.email
+        }`
       );
+      console.log(classes);
       return res.data;
     },
   });
-
+  console.log(classes);
   return (
     <section>
+      <Helmet>
+        <title>Golden Peaks | Dashboard My Classes</title>
+      </Helmet>
+      <SectionTitle heading="See all your classes" />
       <div className="lg:mx-12">
         <div className="overflow-x-auto">
           <table className="table">
@@ -41,7 +51,6 @@ const MyClasses = () => {
                 <th>Available seats</th>
                 <th>Price</th>
                 <th>Status</th>
-                <th>Total Enrolled Students</th>
                 <th>Feedback</th>
                 <th>Action</th>
                 <th></th>
@@ -63,34 +72,33 @@ const MyClasses = () => {
                       </div>
                       <div>
                         <div className="font-bold text-base">
-                          {singleClass?.className}
+                          {singleClass?.class_name}
                         </div>
                       </div>
                     </div>
                   </td>
                   <td className="font-bold text-base text-center">
-                    {singleClass?.availableSeats}
+                    {singleClass?.available_seats}
                   </td>
                   <td className="font-bold text-base">${singleClass?.price}</td>
                   <td className="font-bold text-base text-secondary">
                     {singleClass?.status}
                   </td>
-                  <td className="font-bold text-base text-center">
-                    {singleClass?.numberOfStudents}
-                  </td>
                   <td>
                     <label
                       htmlFor={`my_modal_${singleClass._id}`}
-                      className="myBtn"
+                      className="btn-outlined"
                     >
                       See
                     </label>
                   </td>
-                  <td>
-                    <button className="btn">
-                      <FaEdit className="h-5 w-5" />
-                    </button>
-                  </td>
+                  <Link to="/dashboard/updateClasses">
+                    <td>
+                      <button className="btn">
+                        <FaEdit className="h-5 w-5" />
+                      </button>
+                    </td>
+                  </Link>
                   <td>
                     <input
                       type="checkbox"

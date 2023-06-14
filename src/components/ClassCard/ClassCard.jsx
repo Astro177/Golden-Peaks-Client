@@ -29,8 +29,8 @@ const ClassCard = ({ singleClass }) => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const [addedClass , refetch] = useClass();
-  // const [enrollClasses] = useEnroll();
-
+  const [enrollClasses] = useEnroll();
+  console.log(enrollClasses);
 
   const handleSelected = () => {
     if (user) {
@@ -83,17 +83,15 @@ const ClassCard = ({ singleClass }) => {
         <p className="font-semibold">Price: {price}$</p>
         <div>
           <button
-            // disabled={
-            //   available_seats <= 0 ||
-            //   isAdmin ||
-            //   isInstructor ||
-            //   addedClass?.find((classCart) => classCart?.classId === _id) ||
-            //   enrollClasses?.find((id) => id._id === _id)
-            //     ? true
-            //     : false
-            // }
+            disabled={
+              available_seats <= 0 ||
+              isAdmin ||
+              isInstructor
+                ? true
+                : false
+            }
             onClick={handleSelected}
-            className="btn-outlined"
+            className={isAdmin||isInstructor?"btn":"btn-outlined"}
           >
             Select Class
           </button>
