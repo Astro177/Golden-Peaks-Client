@@ -7,6 +7,7 @@ import login from "../../assets/animations/login.json";
 import { AuthContext } from "../../provider/Authprovider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { handleGoogleSignIn, signIn} = useContext(AuthContext);
@@ -49,6 +50,9 @@ const Login = () => {
 
   return (
     <div className="md:flex justify-center items-center gap-8">
+      <Helmet>
+        <title>Golden Peaks | Log-in</title>
+      </Helmet>
       <div>
         <Lottie options={defaultOptions} height={600} width={400} />
       </div>
